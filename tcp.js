@@ -1,13 +1,23 @@
+
+// Event emitters
 var events = require('events');
+// Prototypes
 var util = require('util');
+// Adding send method to socket object
 var _ = require("underscore");
+// TCP functionality
 var net = require('net');
 
+// For initalilising a new TCP server
 function server(port) {
     
+    // TCP host is default to 127.0.0.1
     var HOST = '127.0.0.1';
+    // Server port has to be specified
     var PORT = port;
     
+    // New event object, only used for connection event,
+    // when a new client connects
     var Sockets = function(){
       events.EventEmitter.call(this);
       
@@ -19,13 +29,19 @@ function server(port) {
         }
       }
     };
+    // Add event functionality
     util.inherits(Sockets, events.EventEmitter);
+    // Init a new sockets object
     var sockets = new Sockets();
     
+    // Create the tcp server
     var server = net.createServer(function (socket0) {
       
+      // The socket also has to have a event functionality
       socket0.prototype = Object.create(events.EventEmitter.prototype);
       
+      // For sending data to clients
+      // It has built-in JSON encoding
       function send(event, data) {
         var message;
         if(data) {
