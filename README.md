@@ -13,10 +13,9 @@ git clone https://github.com/kasmura/tcp.js.git
 ### Server
 
 ```js
-var tcpjs = require('./tcp-server.js');
-tcpjs.listen(50);
+var sockets = require('./tcp.js').server(5342);
 
-tcpjs.sockets.on('connection', function (socket) {
+sockets.on('connection', function (socket) {
   socket.send('news', { hello: 'world'});
   socket.on('myEvent', function (data) {
     console.log(data);
@@ -27,16 +26,14 @@ tcpjs.sockets.on('connection', function (socket) {
 ### Client
 
 ```js
-var tcpjs = require('./tcp-client.js');
+var sockets = require('./tcp.js').client('127.0.0.1', 5342);
 
-tcpjs.sockets.on('connection', function(socket) {
+sockets.on('connection', function(socket) {
   socket.on('news', function (data) {
     console.log(data);
     socket.send('myEvent', { my: 'data'});
   });    
 });
-
-tcpjs.connect('127.0.0.1', 50);
 ```
 
 ## Author
