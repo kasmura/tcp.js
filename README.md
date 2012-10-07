@@ -13,7 +13,7 @@ git clone https://github.com/kasmura/tcp.js.git
 ### Server
 
 ```js
-var sockets = require('./tcp.js').server(5342);
+var sockets = require('./tcp.js').server(1337);
 
 sockets.on('connection', function (socket) {
   socket.send('news', { hello: 'world'});
@@ -26,7 +26,7 @@ sockets.on('connection', function (socket) {
 ### Client
 
 ```js
-var sockets = require('./tcp.js').client('127.0.0.1', 5342);
+var sockets = require('./tcp.js').client('127.0.0.1', 1337);
 
 sockets.on('connection', function(socket) {
   socket.on('news', function (data) {
