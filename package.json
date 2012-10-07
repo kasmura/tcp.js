@@ -1,6 +1,6 @@
 {
     "name": "tcp.js"
-  , "version": "0.1.0"
+  , "version": "0.1.1"
   , "description": "Easy TCP communication for node.js"
   , "homepage": "https://github.com/kasmura/tcp.js"
   , "keywords": ["tcp", "socket", "realtime", "communication"]
