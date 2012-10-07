@@ -1,6 +1,6 @@
 # TCP.JS
 
-tcp.js is a library for easy JSON/TCP communication in node.js. It is similar to socket.io for WebSockets.
+tcp.js is a Node.js projet making TCP communication easy in node.js. It tries to level out the difference between and a client, making the communication more simple. It also has built-in JSON encoding/decoding.
 
 ## How to Install
 
