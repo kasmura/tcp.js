@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Tcp.js by kasmura</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Tcp.js</h1>
+        <p>Node.js library for easy TCP communication</p>
+
+        <p class="view"><a href="https://github.com/kasmura/tcp.js">View the Project on GitHub <small>kasmura/tcp.js</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/kasmura/tcp.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kasmura/tcp.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kasmura/tcp.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>tcp.js</h1>
+
+<p>tcp.js is a Node.js project making TCP communication easy in node.js. It tries to level out the difference between and a client, making the communication more simple. It also has built-in JSON encoding/decoding.</p>
+
+<h2>Introduction</h2>
+
+<p>tcp.js is a very simple module for node.js. It has developed because the use of the native net module in node.js, can be cumbersome to use for writing TCP servers and clients. Therefore tcp.js was developed, to make TCP communication very easy, by looking at the well-developed library for WebSocket-communication socket.io, and presenting a similar interface, with custom events and emits. </p>
+
+<p>Built in to tcp.js is JSON encoding and decoding, so that JavaScript objects can be passed seamlessly around from server to client and the other way around. While providing this easy interface, the original properties of the tcp library is still available, giving developers all the need for craftin fast and robust TCP applications.</p>
+
+<h2>How to Install</h2>
+
+<div class="highlight"><pre><span class="nv">$ </span>npm install tcp.js
+</pre></div>
+
+<h2>How to use</h2>
+
+<h3>Server</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">sockets</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'tcp.js'</span><span class="p">).</span><span class="nx">server</span><span class="p">(</span><span class="mi">1337</span><span class="p">);</span>
+
+<span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">socket</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'news'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">hello</span><span class="o">:</span> <span class="s1">'world'</span><span class="p">});</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'myEvent'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>Client</h3>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">sockets</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'tcp.js'</span><span class="p">).</span><span class="nx">client</span><span class="p">(</span><span class="s1">'127.0.0.1'</span><span class="p">,</span> <span class="mi">1337</span><span class="p">);</span>
+
+<span class="nx">sockets</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'connection'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">socket</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'news'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s1">'myEvent'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">my</span><span class="o">:</span> <span class="s1">'data'</span><span class="p">});</span>
+  <span class="p">});</span>    
+<span class="p">});</span>
+</pre></div>
+
+<h2>Author</h2>
+
+<p>This library is developed by kasmura</p>
+
+<p>His website is <a href="http://www.kasmura.com">www.kasmura.com</a></p>
+
+<h2>License</h2>
+
+<p>This is free and unencumbered software released into the public domain.</p>
+
+<p>Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.</p>
+
+<p>In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.</p>
+
+<p>For more information, please refer to <a href="http://unlicense.org/">http://unlicense.org/</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/kasmura">kasmura</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
