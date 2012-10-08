@@ -1,6 +1,6 @@
 # tcp.js
 
-tcp.js is a Node.js projet making TCP communication easy in node.js. It tries to level out the difference between and a client, making the communication more simple. It also has built-in JSON encoding/decoding.
+tcp.js is a Node.js project making TCP communication easy in node.js. It tries to level out the difference between and a client, making the communication more simple. It also has built-in JSON encoding/decoding.
 
 ## How to Install
 
@@ -42,4 +42,4 @@ This library is developed by kasmura
 His website is www.kasmura.com
 
 ## License
-NO RIGHTS RESERVED (ANTI-COPYRIGHT)
+NO RIGHTS RESERVED / ANTI-COPYRIGHT / UNLICENSE
