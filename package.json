@@ -11,4 +11,7 @@
     }
   , "main": "tcp.js"
   , "engines": { "node": "*" }
+  , "dependencies": {
+        "underscore": "1.4.2"
+    }
 }
