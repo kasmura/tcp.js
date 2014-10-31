@@ -9,10 +9,10 @@ var _ = require("underscore");
 var net = require('net');
 
 // For initalilising a new TCP server
-function server(port) {
+function server(port,host) {
     
     // TCP host is default to 127.0.0.1
-    var HOST = '127.0.0.1';
+    var HOST = host;
     // Server port has to be specified
     var PORT = port;
     
